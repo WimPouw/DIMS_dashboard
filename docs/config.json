@@ -4,6 +4,7 @@
         "3120": ["bodysync", "neuralsync", "neuralsync2", "neuralsync3"]
     },
     "include_RQA": ["bodysync", "neuralsync", "neuralsync2", "neuralsync3"],
+    "include_crosswavelet": ["bodysync", "neuralsync"],
     "defaultWindowSize": 5,
     "title": "DIMS Dashboard",
     "subtitle": "Multimodal Synchrony Exploration Visualization",
