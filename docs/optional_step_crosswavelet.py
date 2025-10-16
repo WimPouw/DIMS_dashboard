@@ -58,7 +58,6 @@ SAVE_FULL_RESOLUTION = False # Also save full resolution data (warning: large fi
 OUTPUT_FORMAT = 'json'       # Output format: 'json', 'npz', or 'both'
 
 # ---------- Analysis Coverage Parameters ----------
-COMPUTE_AUTO_WAVELETS = True    # Also compute auto-wavelets (same series with itself)
 COMPUTE_ALL_PAIRS = True        # Compute all possible pairs (not just specified)
 SYMMETRIC_PAIRS = False          # Compute both A vs B and B vs A (usually redundant)
 
@@ -243,6 +242,8 @@ def compute_cross_wavelet_standard(data1, data2, time, dt,
         """Smooth wavelet spectrum in both time and scale."""
         # Smooth in time
         smooth_time = np.zeros_like(W)
+        n_time = W.shape[1]
+        
         for i, scale in enumerate(scales):
             # Smoothing window size proportional to scale
             if COHERENCE_SMOOTH_TIME:
@@ -252,22 +253,45 @@ def compute_cross_wavelet_standard(data1, data2, time, dt,
                 if window_size % 2 == 0:
                     window_size += 1
                 
-                # Apply smoothing
+                # Apply smoothing - ensure output matches expected length
                 kernel = np.ones(window_size) / window_size
-                smooth_time[i, :] = np.convolve(np.abs(W[i, :])**2, kernel, mode='same')
+                convolved = np.convolve(np.abs(W[i, :])**2, kernel, mode='same')
+                
+                # Handle any size mismatches from convolution
+                if len(convolved) != n_time:
+                    if len(convolved) > n_time:
+                        # Truncate to match expected size
+                        convolved = convolved[:n_time]
+                    else:
+                        # Pad to match expected size (edge mode preserves boundaries)
+                        pad_width = n_time - len(convolved)
+                        convolved = np.pad(convolved, (0, pad_width), mode='edge')
+                
+                smooth_time[i, :] = convolved
             else:
                 smooth_time[i, :] = np.abs(W[i, :])**2
         
         # Smooth in scale
         if COHERENCE_SMOOTH_SCALE:
             smooth_scale = np.zeros_like(smooth_time)
+            n_scales = smooth_time.shape[0]
             scale_window = int(COHERENCE_SCALE_WIDTH / dj)
             if scale_window < 1:
                 scale_window = 1
             
-            for j in range(N):
+            for j in range(n_time):
                 kernel = np.ones(scale_window) / scale_window
-                smooth_scale[:, j] = np.convolve(smooth_time[:, j], kernel, mode='same')
+                convolved = np.convolve(smooth_time[:, j], kernel, mode='same')
+                
+                # Handle any size mismatches
+                if len(convolved) != n_scales:
+                    if len(convolved) > n_scales:
+                        convolved = convolved[:n_scales]
+                    else:
+                        pad_width = n_scales - len(convolved)
+                        convolved = np.pad(convolved, (0, pad_width), mode='edge')
+                
+                smooth_scale[:, j] = convolved
         else:
             smooth_scale = smooth_time
         
@@ -340,18 +364,18 @@ def downsample_for_storage(cwt_results, time, scale_avg_power,
     period_ds = cwt_results['period'][::freq_factor]
     scales_ds = cwt_results['scales'][::freq_factor]
     
-    # Downsample 2D arrays
-    power_ds = cwt_results['power'][::freq_factor, ::time_factor]
-    phase_ds = cwt_results['phase'][::freq_factor, ::time_factor]
-    coherence_ds = cwt_results['coherence'][::freq_factor, ::time_factor]
-    sig95_xwt_ds = cwt_results['sig95_xwt'][::freq_factor, ::time_factor]
+    # Downsample 2D arrays - ensure real values only
+    power_ds = np.real(cwt_results['power'][::freq_factor, ::time_factor])
+    phase_ds = np.real(cwt_results['phase'][::freq_factor, ::time_factor])
+    coherence_ds = np.real(cwt_results['coherence'][::freq_factor, ::time_factor])
+    sig95_xwt_ds = np.real(cwt_results['sig95_xwt'][::freq_factor, ::time_factor])
     
-    # Downsample 1D arrays
-    coi_ds = cwt_results['coi'][::time_factor]
-    signif_xwt_ds = cwt_results['signif_xwt'][::freq_factor]
-    global_power_ds = cwt_results['global_power'][::freq_factor]
-    global_signif_ds = cwt_results['global_signif'][::freq_factor]
-    scale_avg_power_ds = scale_avg_power[::time_factor]
+    # Downsample 1D arrays - ensure real values only
+    coi_ds = np.real(cwt_results['coi'][::time_factor])
+    signif_xwt_ds = np.real(cwt_results['signif_xwt'][::freq_factor])
+    global_power_ds = np.real(cwt_results['global_power'][::freq_factor])
+    global_signif_ds = np.real(cwt_results['global_signif'][::freq_factor])
+    scale_avg_power_ds = np.real(scale_avg_power[::time_factor])
     
     if VERBOSE and (time_factor > 1 or freq_factor > 1):
         print(f"  Downsampled: time {n_time}->{len(time_ds)}, freq {n_freq}->{len(freqs_ds)}")
@@ -406,6 +430,12 @@ def calculate_summary_statistics(cwt_results, time, scale_avg_power, scale_avg_s
     dominant_freq_idx = np.ma.argmax(power_valid, axis=0)
     dominant_freqs = freqs[dominant_freq_idx]
     
+    # Convert to list, handling masked arrays
+    if isinstance(dominant_freqs, np.ma.MaskedArray):
+        dominant_freqs_list = dominant_freqs.filled(0).tolist()
+    else:
+        dominant_freqs_list = dominant_freqs.tolist()
+    
     # Phase statistics (circular mean)
     mean_phase_by_freq = np.angle(np.mean(np.exp(1j * phase), axis=1))
     
@@ -418,7 +448,7 @@ def calculate_summary_statistics(cwt_results, time, scale_avg_power, scale_avg_s
     return {
         'global_power': global_power.tolist(),
         'global_signif': global_signif.tolist(),
-        'dominant_freqs': dominant_freqs.filled(0).tolist(),
+        'dominant_freqs': dominant_freqs_list,
         'mean_phase_by_freq': mean_phase_by_freq.tolist(),
         'high_coherence_by_freq': high_coherence_by_freq.tolist(),
         'high_coherence_fraction': float(np.sum(high_coherence_regions & ~coi_mask) / np.sum(~coi_mask)) if np.sum(~coi_mask) > 0 else 0,
@@ -512,7 +542,8 @@ def process_cross_wavelet_pair(video_id, data_type1, data_type2, config):
     if len(sel) > 0:
         # Scale-averaged power
         Cdelta = cwt_results['mother'].cdelta
-        scale_avg = cwt_results['scales'] * np.ones((len(time_common), 1)).T
+        # Create scale matrix properly for broadcasting: (n_scales, n_times)
+        scale_avg = cwt_results['scales'][:, np.newaxis] * np.ones((1, len(time_common)))
         scale_avg = power / scale_avg
         scale_avg_power = cwt_results['dj'] * dt / Cdelta * scale_avg[sel, :].sum(axis=0)
         
@@ -573,9 +604,9 @@ def process_cross_wavelet_pair(video_id, data_type1, data_type2, config):
     # Save full resolution if requested
     if SAVE_FULL_RESOLUTION:
         result['full_resolution'] = {
-            'power': cwt_results['power'].tolist(),
-            'coherence': cwt_results['coherence'].tolist(),
-            'phase': cwt_results['phase'].tolist()
+            'power': np.real(cwt_results['power']).tolist(),
+            'coherence': np.real(cwt_results['coherence']).tolist(),
+            'phase': np.real(cwt_results['phase']).tolist()
         }
         if VERBOSE:
             print("  Warning: Full resolution data saved (large file size)")
@@ -610,7 +641,7 @@ def main():
     
     cwt_data_types = config['include_crosswavelet']
     
-    if len(cwt_data_types) < 2 and not COMPUTE_AUTO_WAVELETS:
+    if len(cwt_data_types) < 2:
         print("Error: Need at least 2 data types for cross-wavelet analysis")
         return
     
@@ -645,25 +676,14 @@ def main():
         # Process all pairs
         cwt_results = {}
         
-        # Determine which pairs to compute
-        if COMPUTE_ALL_PAIRS and len(cwt_data_types) > 2:
-            # Compute all unique pairs
-            pairs_to_compute = []
-            for i in range(len(cwt_data_types)):
-                for j in range(i + 1 if not SYMMETRIC_PAIRS else 0, len(cwt_data_types)):
-                    if i != j or COMPUTE_AUTO_WAVELETS:
-                        pairs_to_compute.append((cwt_data_types[i], cwt_data_types[j]))
-        else:
-            # Compute only specified pairs
-            pairs_to_compute = []
-            for i in range(len(cwt_data_types)):
-                for j in range(i + 1, len(cwt_data_types)):
-                    pairs_to_compute.append((cwt_data_types[i], cwt_data_types[j]))
-            
-            # Add auto-wavelets if requested
-            if COMPUTE_AUTO_WAVELETS:
-                for data_type in cwt_data_types:
-                    pairs_to_compute.append((data_type, data_type))
+        # Determine which pairs to compute (only between different data types)
+        pairs_to_compute = []
+        for i in range(len(cwt_data_types)):
+            for j in range(i + 1, len(cwt_data_types)):
+                pairs_to_compute.append((cwt_data_types[i], cwt_data_types[j]))
+                # If symmetric pairs requested, also add reverse
+                if SYMMETRIC_PAIRS:
+                    pairs_to_compute.append((cwt_data_types[j], cwt_data_types[i]))
         
         if VERBOSE:
             print(f"Computing {len(pairs_to_compute)} pair(s)")
@@ -701,7 +721,6 @@ def main():
                     },
                     'processing_info': {
                         'pairs_computed': len(cwt_results),
-                        'auto_wavelets_included': COMPUTE_AUTO_WAVELETS,
                         'coi_excluded_from_stats': COI_EXCLUDE,
                         'visualization_resolution': f"{MAX_TIME_POINTS_VIZ}x{MAX_FREQ_POINTS_VIZ}"
                     }
