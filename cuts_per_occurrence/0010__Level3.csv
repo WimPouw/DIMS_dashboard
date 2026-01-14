@@ -1,0 +1,122 @@
+tier,start_s,end_s,text
+Game events,0.0,42.499,Level 3
+Gaze Parent,0.0,0.571,Counter
+Gaze Parent,0.571,0.804,Ball
+Gaze Parent,0.804,0.951,Partner's controller
+Gaze Parent,0.957,1.468,Ball
+Gaze Parent,1.471,2.406,Counter
+Gaze Parent,2.409,4.764,Further
+Gaze Parent,4.767,5.2,Ball
+Gaze Parent,5.2,6.128,Counter
+Gaze Parent,6.132,6.63,Further
+Gaze Parent,6.63,7.262,Counter
+Gaze Parent,7.262,7.646,Further
+Gaze Parent,7.649,8.026,Ball
+Gaze Parent,8.026,8.211,Go
+Gaze Parent,8.211,8.563,Partner's controller
+Gaze Parent,8.565,9.218,My controller
+Gaze Parent,9.221,9.833,Further
+Gaze Parent,9.833,10.293,My controller
+Gaze Parent,10.298,11.118,Further
+Gaze Parent,11.118,11.384,Ball
+Gaze Parent,11.386,11.74,My controller
+Gaze Parent,11.74,12.032,Further
+Gaze Parent,12.035,12.302,Partner's controller
+Gaze Parent,12.302,12.851,Further
+Gaze Parent,12.851,13.513,Partner's controller
+Gaze Parent,13.513,15.105,Further
+Gaze Parent,15.105,15.84,Ball
+Gaze Parent,15.842,16.611,Further
+Gaze Parent,16.611,17.057,My controller
+Gaze Parent,17.06,17.808,Further
+Gaze Parent,17.808,17.987,Ball
+Gaze Parent,17.987,18.638,Partner's controller
+Gaze Parent,18.638,19.046,Further
+Gaze Parent,19.046,19.314,Ball
+Gaze Parent,19.314,19.606,Go
+Gaze Parent,19.611,20.427,Ball
+Gaze Parent,20.427,21.37,Further
+Gaze Parent,21.377,21.599,Ball
+Gaze Parent,21.599,23.286,Further
+Gaze Parent,23.293,23.706,Ball
+Gaze Parent,23.706,23.851,My controller
+Gaze Parent,23.853,24.47,Ball
+Gaze Parent,24.47,27.646,Further
+Gaze Parent,27.647,28.255,Partner's controller
+Gaze Parent,28.257,29.577,Further
+Gaze Parent,29.579,30.223,My controller
+Gaze Parent,30.227,30.719,Ball
+Gaze Parent,30.719,30.914,Further
+Gaze Parent,30.914,31.298,Partner's controller
+Gaze Parent,31.3,31.701,Further
+Gaze Parent,31.701,31.81,Ball
+Gaze Parent,31.812,32.214,Further
+Gaze Parent,32.218,32.74,Partner's controller
+Gaze Parent,32.74,32.933,Further
+Gaze Parent,32.933,33.286,My controller
+Gaze Parent,33.286,35.42,Ball
+Gaze Parent,35.422,35.863,Further
+Gaze Parent,35.866,37.96,Partner's controller
+Gaze Parent,37.963,38.35,Further
+Gaze Parent,38.35,39.453,My controller
+Gaze Parent,39.453,39.832,Further
+Gaze Parent,39.832,40.026,Partner's controller
+Gaze Parent,40.026,40.726,Ball
+Gaze Parent,40.726,41.231,Partner's controller
+Gaze Parent,41.236,41.641,Go
+Gaze Parent,41.644,42.167,Ball
+Gaze Parent,42.167,42.499,Counter
+Gaze Child,0.004,0.29,Further
+Gaze Child,0.296,1.072,Ball
+Gaze Child,1.085,2.954,My controller
+Gaze Child,2.961,3.867,Partner's controller
+Gaze Child,3.874,4.346,Further
+Gaze Child,4.346,4.936,Counter
+Gaze Child,4.942,5.346,My controller
+Gaze Child,5.352,5.482,Ball
+Gaze Child,5.489,6.271,Further
+Gaze Child,6.271,6.7,My controller
+Gaze Child,6.706,7.253,Counter
+Gaze Child,7.265,7.644,Further
+Gaze Child,7.65,7.812,Ball
+Gaze Child,7.812,8.048,My controller
+Gaze Child,8.054,8.457,Go
+Gaze Child,8.457,9.389,Ball
+Gaze Child,9.389,9.706,My controller
+Gaze Child,9.718,10.42,Partner's controller
+Gaze Child,10.426,10.774,My controller
+Gaze Child,10.78,11.762,Partner's controller
+Gaze Child,11.762,12.209,My controller
+Gaze Child,12.215,12.42,Ball
+Gaze Child,12.426,14.395,My controller
+Gaze Child,14.395,17.6,Further
+Gaze Child,17.607,17.967,My controller
+Gaze Child,17.967,18.203,Partner's controller
+Gaze Child,18.203,18.408,Ball
+Gaze Child,18.42,19.147,My controller
+Gaze Child,19.153,19.439,Further
+Gaze Child,19.439,19.892,Ball
+Gaze Child,19.892,20.181,Go
+Gaze Child,20.181,22.1,Ball
+Gaze Child,22.1,24.259,Further
+Gaze Child,24.259,24.639,Partner's controller
+Gaze Child,24.64,24.756,Ball
+Gaze Child,24.756,29.59,Further
+Gaze Child,29.596,30.137,My controller
+Gaze Child,30.137,30.53,Further
+Gaze Child,30.53,31.933,My controller
+Gaze Child,31.938,32.502,Partner's controller
+Gaze Child,32.502,32.767,Go
+Gaze Child,32.767,33.054,Ball
+Gaze Child,33.06,33.297,Go
+Gaze Child,33.297,35.364,Ball
+Gaze Child,35.364,37.502,Further
+Gaze Child,37.502,37.938,My controller
+Gaze Child,37.938,38.684,Ball
+Gaze Child,38.684,39.623,Partner's controller
+Gaze Child,39.629,39.933,My controller
+Gaze Child,39.933,40.579,Ball
+Gaze Child,40.579,40.717,My controller
+Gaze Child,40.717,41.623,Go
+Gaze Child,41.623,42.499,Ball
+Parent Gesture,18.197,19.128,Clicks on child's controller

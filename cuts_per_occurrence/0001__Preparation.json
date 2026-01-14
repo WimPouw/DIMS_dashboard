@@ -1,0 +1,98 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 19.02,
+        "end": 22.01,
+        "text": "Are we supposed to guess what the game is about?"
+      },
+      {
+        "start": 126.7,
+        "end": 128.796,
+        "text": "Do you agree to participate in the study?"
+      },
+      {
+        "start": 128.919,
+        "end": 129.919,
+        "text": "Well, come on."
+      },
+      {
+        "start": 130.51,
+        "end": 131.47,
+        "text": "Select here."
+      },
+      {
+        "start": 131.47,
+        "end": 132.22,
+        "text": "I think so."
+      },
+      {
+        "start": 132.22,
+        "end": 133.22,
+        "text": "Firstly."
+      },
+      {
+        "start": 135.19,
+        "end": 137.5,
+        "text": "Well, first of all, I think you need to mark that it is correct."
+      },
+      {
+        "start": 137.53,
+        "end": 138.49,
+        "text": "Not."
+      },
+      {
+        "start": 138.49,
+        "end": 139.03,
+        "text": "So what?"
+      },
+      {
+        "start": 139.03,
+        "end": 140.03,
+        "text": "Start."
+      },
+      {
+        "start": 141.49,
+        "end": 142.69,
+        "text": "Well, check it again."
+      },
+      {
+        "start": 143.32,
+        "end": 144.4,
+        "text": "Well, it happened."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 128.22,
+        "end": 129.22,
+        "text": "No no."
+      },
+      {
+        "start": 129.78,
+        "end": 130.78,
+        "text": "This?"
+      },
+      {
+        "start": 134.07,
+        "end": 135.07,
+        "text": "And here?"
+      },
+      {
+        "start": 136.77,
+        "end": 137.77,
+        "text": "But, because.."
+      },
+      {
+        "start": 139.56,
+        "end": 141.45,
+        "text": "But I, it didn't happen to me."
+      },
+      {
+        "start": 147.96,
+        "end": 148.96,
+        "text": "NO."
+      }
+    ]
+  }
+}

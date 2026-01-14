@@ -1,8 +1,8 @@
 {
   "video_id": "3120",
   "rqa_data": {
-    "bodysync": {
-      "data_type": "bodysync",
+    "gaze_child": {
+      "data_type": "gaze_child",
       "threshold": 0.11549753287499052,
       "recurrence_rate": 0.0700000565121812,
       "time_range": [

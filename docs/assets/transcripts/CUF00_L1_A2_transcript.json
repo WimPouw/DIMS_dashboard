@@ -1,0 +1,62 @@
+{
+  "text": "Good. Okay, now. Good. The worst point. We went, um, a little to the left. Good. mh. Good.",
+  "segments": [
+    {
+      "start": 22.720000000000027,
+      "end": 23.720000000000027,
+      "text": "Good.",
+      "speaker": "Parent",
+      "id": 0
+    },
+    {
+      "start": 31.019999999999982,
+      "end": 32.01999999999998,
+      "text": "Okay, now.",
+      "speaker": "Child",
+      "id": 1
+    },
+    {
+      "start": 48.97000000000003,
+      "end": 49.420000000000016,
+      "text": "Good.",
+      "speaker": "Parent",
+      "id": 2
+    },
+    {
+      "start": 49.420000000000016,
+      "end": 50.170000000000016,
+      "text": "The worst point.",
+      "speaker": "Parent",
+      "id": 3
+    },
+    {
+      "start": 50.170000000000016,
+      "end": 51.94,
+      "text": "We went, um, a little to the left.",
+      "speaker": "Parent",
+      "id": 4
+    },
+    {
+      "start": 52.20999999999998,
+      "end": 53.20999999999998,
+      "text": "Good.",
+      "speaker": "Parent",
+      "id": 5
+    },
+    {
+      "start": 56.49000000000001,
+      "end": 57.49000000000001,
+      "text": "mh.",
+      "speaker": "Child",
+      "id": 6
+    },
+    {
+      "start": 58.48000000000002,
+      "end": 59.48000000000002,
+      "text": "Good.",
+      "speaker": "Parent",
+      "id": 7
+    }
+  ],
+  "language": "en"
+}

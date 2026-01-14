@@ -1,0 +1,130 @@
+{
+  "eaf": "C:\\Users\\mikub\\OneDrive\\Pulpit\\CNK-ORTHO\\Interakcje\\Interaction_1\\analiza.eaf",
+  "event_tier": "Game events",
+  "subtitle_tiers": [
+    "Parent SUB-EN",
+    "Child SUB-EN"
+  ],
+  "clips": [
+    {
+      "index": 1,
+      "label": "Preparation",
+      "t0_ms": 0,
+      "t1_ms": 164333,
+      "trimmed_eaf": "cuts_per_occurrence\\0001__Preparation.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0001__Preparation.json",
+      "events_csv": "cuts_per_occurrence\\0001__Preparation.csv"
+    },
+    {
+      "index": 2,
+      "label": "Level 1",
+      "t0_ms": 164333,
+      "t1_ms": 230448,
+      "trimmed_eaf": "cuts_per_occurrence\\0002__Level1.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0002__Level1.json",
+      "events_csv": "cuts_per_occurrence\\0002__Level1.csv"
+    },
+    {
+      "index": 3,
+      "label": "Failure",
+      "t0_ms": 230448,
+      "t1_ms": 234066,
+      "trimmed_eaf": "cuts_per_occurrence\\0003__Failure.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0003__Failure.json",
+      "events_csv": "cuts_per_occurrence\\0003__Failure.csv"
+    },
+    {
+      "index": 4,
+      "label": "Level 1",
+      "t0_ms": 234066,
+      "t1_ms": 296980,
+      "trimmed_eaf": "cuts_per_occurrence\\0004__Level1.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0004__Level1.json",
+      "events_csv": "cuts_per_occurrence\\0004__Level1.csv"
+    },
+    {
+      "index": 5,
+      "label": "Level choice",
+      "t0_ms": 296980,
+      "t1_ms": 302028,
+      "trimmed_eaf": "cuts_per_occurrence\\0005__Levelchoice.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0005__Levelchoice.json",
+      "events_csv": "cuts_per_occurrence\\0005__Levelchoice.csv"
+    },
+    {
+      "index": 6,
+      "label": "Level 2",
+      "t0_ms": 302028,
+      "t1_ms": 375357,
+      "trimmed_eaf": "cuts_per_occurrence\\0006__Level2.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0006__Level2.json",
+      "events_csv": "cuts_per_occurrence\\0006__Level2.csv"
+    },
+    {
+      "index": 7,
+      "label": "Failure",
+      "t0_ms": 375357,
+      "t1_ms": 382435,
+      "trimmed_eaf": "cuts_per_occurrence\\0007__Failure.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0007__Failure.json",
+      "events_csv": "cuts_per_occurrence\\0007__Failure.csv"
+    },
+    {
+      "index": 8,
+      "label": "Level 2",
+      "t0_ms": 382435,
+      "t1_ms": 429830,
+      "trimmed_eaf": "cuts_per_occurrence\\0008__Level2.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0008__Level2.json",
+      "events_csv": "cuts_per_occurrence\\0008__Level2.csv"
+    },
+    {
+      "index": 9,
+      "label": "Level choice",
+      "t0_ms": 429830,
+      "t1_ms": 432721,
+      "trimmed_eaf": "cuts_per_occurrence\\0009__Levelchoice.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0009__Levelchoice.json",
+      "events_csv": "cuts_per_occurrence\\0009__Levelchoice.csv"
+    },
+    {
+      "index": 10,
+      "label": "Level 3",
+      "t0_ms": 432721,
+      "t1_ms": 475220,
+      "trimmed_eaf": "cuts_per_occurrence\\0010__Level3.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0010__Level3.json",
+      "events_csv": "cuts_per_occurrence\\0010__Level3.csv"
+    },
+    {
+      "index": 11,
+      "label": "Level choice",
+      "t0_ms": 475220,
+      "t1_ms": 489320,
+      "trimmed_eaf": "cuts_per_occurrence\\0011__Levelchoice.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0011__Levelchoice.json",
+      "events_csv": "cuts_per_occurrence\\0011__Levelchoice.csv"
+    },
+    {
+      "index": 12,
+      "label": "Level Bonus",
+      "t0_ms": 489320,
+      "t1_ms": 653030,
+      "trimmed_eaf": "cuts_per_occurrence\\0012__LevelBonus.eaf",
+      "videos": [],
+      "transcript_json": "cuts_per_occurrence\\0012__LevelBonus.json",
+      "events_csv": "cuts_per_occurrence\\0012__LevelBonus.csv"
+    }
+  ]
+}

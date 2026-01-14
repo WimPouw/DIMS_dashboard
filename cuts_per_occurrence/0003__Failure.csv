@@ -1,0 +1,4 @@
+tier,start_s,end_s,text
+Game events,0.0,3.618,Failure
+Gaze Parent,0.008,3.618,Counter
+Gaze Child,0.0,3.618,Counter

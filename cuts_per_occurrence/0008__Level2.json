@@ -1,0 +1,68 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 0.0,
+        "end": 2.015,
+        "text": "Okay, but we already know what and how."
+      },
+      {
+        "start": 2.975,
+        "end": 3.975,
+        "text": "This will go fast."
+      },
+      {
+        "start": 7.445,
+        "end": 8.445,
+        "text": "No."
+      },
+      {
+        "start": 12.185,
+        "end": 13.185,
+        "text": "No."
+      },
+      {
+        "start": 20.565,
+        "end": 23.734,
+        "text": "Well, no, no, no, Lena, more like here, so that he would be..."
+      },
+      {
+        "start": 30.455,
+        "end": 32.164,
+        "text": "Myszko, Yes, I wish it was here right away."
+      },
+      {
+        "start": 33.815,
+        "end": 34.815,
+        "text": "No."
+      },
+      {
+        "start": 40.255,
+        "end": 41.695,
+        "text": "Well, let's do it here first."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 6.685,
+        "end": 7.685,
+        "text": "Here?"
+      },
+      {
+        "start": 7.745,
+        "end": 8.745,
+        "text": "No."
+      },
+      {
+        "start": 33.025,
+        "end": 34.025,
+        "text": "Here?"
+      },
+      {
+        "start": 39.235,
+        "end": 40.824,
+        "text": "I guess we have to do this first."
+      }
+    ]
+  }
+}

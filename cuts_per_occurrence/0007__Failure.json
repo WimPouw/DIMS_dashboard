@@ -1,0 +1,33 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 0.0,
+        "end": 0.343,
+        "text": "That's why I'm saying it."
+      },
+      {
+        "start": 4.053,
+        "end": 5.933,
+        "text": "She left, which means we left."
+      },
+      {
+        "start": 5.943,
+        "end": 7.003,
+        "text": "So we have to repeat it."
+      },
+      {
+        "start": 7.023,
+        "end": 7.078,
+        "text": "Okay, but we already know what and how."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 2.993,
+        "end": 3.993,
+        "text": "NO."
+      }
+    ]
+  }
+}

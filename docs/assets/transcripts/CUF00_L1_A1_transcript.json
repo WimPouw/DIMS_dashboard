@@ -1,0 +1,195 @@
+{
+  "text": "Ha!. Here? Wait. Or maybe we'll see it like this? And that here you have to move. Good. A. You're doing something here, right? Yes, well... So what? So, wait. No. Super. And you? Wait, where do we want to go? So what, the shortest? Well, to this circle. Okay, but this is the shortest route. Let's go. Not. Wait. You have to lower and turn a bit. No. Good. Well, I'm lowering it. I am lowering. Okay, now.",
+  "segments": [
+    {
+      "start": 0.2069999999999936,
+      "end": 3.2069999999999936,
+      "text": "Ha!.",
+      "speaker": "Parent",
+      "id": 0
+    },
+    {
+      "start": 3.997000000000014,
+      "end": 4.997000000000014,
+      "text": "Here?",
+      "speaker": "Child",
+      "id": 1
+    },
+    {
+      "start": 4.1270000000000095,
+      "end": 4.8770000000000095,
+      "text": "Wait.",
+      "speaker": "Parent",
+      "id": 2
+    },
+    {
+      "start": 4.8770000000000095,
+      "end": 5.8770000000000095,
+      "text": "Or maybe we'll see it like this?",
+      "speaker": "Parent",
+      "id": 3
+    },
+    {
+      "start": 6.556999999999988,
+      "end": 8.447000000000003,
+      "text": "And that here you have to move.",
+      "speaker": "Child",
+      "id": 4
+    },
+    {
+      "start": 8.567000000000007,
+      "end": 9.567000000000007,
+      "text": "Good.",
+      "speaker": "Parent",
+      "id": 5
+    },
+    {
+      "start": 10.794999999999987,
+      "end": 11.207999999999998,
+      "text": "A.",
+      "speaker": "Child",
+      "id": 6
+    },
+    {
+      "start": 11.597000000000008,
+      "end": 12.804000000000002,
+      "text": "You're doing something here, right?",
+      "speaker": "Parent",
+      "id": 7
+    },
+    {
+      "start": 13.492999999999995,
+      "end": 14.488,
+      "text": "Yes, well...",
+      "speaker": "Child",
+      "id": 8
+    },
+    {
+      "start": 15.016999999999996,
+      "end": 16.016999999999996,
+      "text": "So what?",
+      "speaker": "Parent",
+      "id": 9
+    },
+    {
+      "start": 16.076999999999998,
+      "end": 17.076999999999998,
+      "text": "So, wait.",
+      "speaker": "Parent",
+      "id": 10
+    },
+    {
+      "start": 20.937000000000012,
+      "end": 21.937000000000012,
+      "text": "No.",
+      "speaker": "Parent",
+      "id": 11
+    },
+    {
+      "start": 23.187000000000012,
+      "end": 24.187000000000012,
+      "text": "Super.",
+      "speaker": "Parent",
+      "id": 12
+    },
+    {
+      "start": 31.437000000000012,
+      "end": 32.43700000000001,
+      "text": "And you?",
+      "speaker": "Child",
+      "id": 13
+    },
+    {
+      "start": 23.83699999999999,
+      "end": 26.277000000000015,
+      "text": "Wait, where do we want to go?",
+      "speaker": "Parent",
+      "id": 14
+    },
+    {
+      "start": 29.327,
+      "end": 32.327,
+      "text": "So what, the shortest?",
+      "speaker": "Parent",
+      "id": 15
+    },
+    {
+      "start": 26.80699999999999,
+      "end": 29.80699999999999,
+      "text": "Well, to this circle.",
+      "speaker": "Child",
+      "id": 16
+    },
+    {
+      "start": 32.477000000000004,
+      "end": 34.17599999999999,
+      "text": "Okay, but this is the shortest route.",
+      "speaker": "Parent",
+      "id": 17
+    },
+    {
+      "start": 30.17699999999999,
+      "end": 30.62700000000001,
+      "text": "Let's go.",
+      "speaker": "Parent",
+      "id": 18
+    },
+    {
+      "start": 39.62700000000001,
+      "end": 40.62700000000001,
+      "text": "Not.",
+      "speaker": "Parent",
+      "id": 19
+    },
+    {
+      "start": 40.55699999999999,
+      "end": 40.66300000000001,
+      "text": "Wait.",
+      "speaker": "Child",
+      "id": 20
+    },
+    {
+      "start": 40.66300000000001,
+      "end": 46.497000000000014,
+      "text": "You have to lower and turn a bit.",
+      "speaker": "Child",
+      "id": 21
+    },
+    {
+      "start": 41.236999999999995,
+      "end": 42.236999999999995,
+      "text": "No.",
+      "speaker": "Parent",
+      "id": 22
+    },
+    {
+      "start": 43.766999999999996,
+      "end": 44.766999999999996,
+      "text": "Good.",
+      "speaker": "Parent",
+      "id": 23
+    },
+    {
+      "start": 46.706999999999994,
+      "end": 47.756,
+      "text": "Well, I'm lowering it.",
+      "speaker": "Parent",
+      "id": 24
+    },
+    {
+      "start": 47.757000000000005,
+      "end": 48.757000000000005,
+      "text": "I am lowering.",
+      "speaker": "Parent",
+      "id": 25
+    },
+    {
+      "start": 51.71700000000001,
+      "end": 52.71700000000001,
+      "text": "Okay, now.",
+      "speaker": "Parent",
+      "id": 26
+    }
+  ],
+  "language": "en"
+}

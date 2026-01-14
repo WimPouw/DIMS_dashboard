@@ -1,13 +1,17 @@
 {
-    "videoIDs": ["3120"],
+    "videoIDs": ["CUF00_L1_A1","CUF00_L1_A2"],
+    "perspectives": ["wide","parent","child"],
+    "videoSrcTemplate": "assets/videos/{videoID}_{persp}.mp4",
+    "fallbackVideoSrcTemplate": "assets/videos/{videoID}.mp4",
     "dataTypes": {
-        "3120": ["bodysync", "neuralsync", "neuralsync2", "neuralsync3"]
+        "CUF00_L1_A1": ["speed","vy","vx"],
+        "CUF00_L1_A2": ["speed","vy","vx"]
     },
-    "include_RQA": ["bodysync", "neuralsync", "neuralsync2", "neuralsync3"],
-    "include_crosswavelet": ["bodysync", "neuralsync"],
+    "include_RQA": ["gaze_child"],
+
     "defaultWindowSize": 5,
     "title": "DIMS Dashboard",
     "subtitle": "Multimodal Synchrony Exploration Visualization",
-    "authors": "Your team's Name",
-    "contacts": "contacts: Your team's contacts"
+    "authors": "Wim Pouw, Grace Miao, Michał Weiss",
+    "contacts": "mj.weiss@student.uw.edu.pl"
 }

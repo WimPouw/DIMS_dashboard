@@ -1,0 +1,73 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 0.0,
+        "end": 0.743,
+        "text": "At the bend in the road.."
+      },
+      {
+        "start": 0.974,
+        "end": 1.844,
+        "text": "ten."
+      },
+      {
+        "start": 1.844,
+        "end": 3.178,
+        "text": "We have to be more careful here, right?"
+      },
+      {
+        "start": 3.944,
+        "end": 4.814,
+        "text": "Here."
+      },
+      {
+        "start": 4.814,
+        "end": 5.814,
+        "text": "Good."
+      },
+      {
+        "start": 30.654,
+        "end": 31.654,
+        "text": "Good."
+      },
+      {
+        "start": 56.904,
+        "end": 57.354,
+        "text": "Good."
+      },
+      {
+        "start": 57.354,
+        "end": 58.104,
+        "text": "The worst point."
+      },
+      {
+        "start": 58.104,
+        "end": 59.874,
+        "text": "We went, um, a little to the left."
+      },
+      {
+        "start": 60.144,
+        "end": 61.144,
+        "text": "Good."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 3.514,
+        "end": 4.514,
+        "text": "Yhm."
+      },
+      {
+        "start": 4.814,
+        "end": 5.814,
+        "text": "Ups?"
+      },
+      {
+        "start": 38.954,
+        "end": 39.954,
+        "text": "Okay, now."
+      }
+    ]
+  }
+}

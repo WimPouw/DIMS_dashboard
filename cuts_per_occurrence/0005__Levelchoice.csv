@@ -1,0 +1,7 @@
+tier,start_s,end_s,text
+Game events,0.0,5.048,Level choice
+Gaze Parent,0.0,0.055,Ball
+Gaze Parent,0.055,5.048,Counter
+Gaze Child,0.0,0.036,Ball
+Gaze Child,0.048,5.048,Counter
+Parent Gesture,3.265,4.614,Clicks

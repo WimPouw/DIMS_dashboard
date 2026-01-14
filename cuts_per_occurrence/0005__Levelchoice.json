@@ -1,0 +1,18 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 3.5,
+        "end": 4.5,
+        "text": "Good."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 1.51,
+        "end": 2.51,
+        "text": "mh."
+      }
+    ]
+  }
+}

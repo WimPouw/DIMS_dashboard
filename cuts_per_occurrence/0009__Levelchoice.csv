@@ -1,0 +1,5 @@
+tier,start_s,end_s,text
+Game events,0.0,2.891,Level choice
+Gaze Parent,0.0,0.001,Intersection
+Gaze Parent,0.001,2.891,Counter
+Gaze Child,0.0,2.891,Counter

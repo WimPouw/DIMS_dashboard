@@ -1,0 +1,7 @@
+tier,start_s,end_s,text
+Game events,0.0,7.078,Failure
+Gaze Parent,0.0,1.424,Ball's trajectory
+Gaze Parent,1.425,7.067,Counter
+Gaze Parent,7.067,7.078,Ball
+Gaze Child,0.0,1.722,Ball's trajectory
+Gaze Child,1.722,7.078,Counter

@@ -1,0 +1,143 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 2.207,
+        "end": 3.207,
+        "text": "Ha!."
+      },
+      {
+        "start": 4.127,
+        "end": 4.877,
+        "text": "Wait."
+      },
+      {
+        "start": 4.877,
+        "end": 5.877,
+        "text": "Or maybe we'll see it like this?"
+      },
+      {
+        "start": 6.557,
+        "end": 8.447,
+        "text": "And that here you have to move."
+      },
+      {
+        "start": 8.567,
+        "end": 9.567,
+        "text": "Good."
+      },
+      {
+        "start": 11.597,
+        "end": 12.804,
+        "text": "You're doing something here, right?"
+      },
+      {
+        "start": 15.017,
+        "end": 16.017,
+        "text": "So what?"
+      },
+      {
+        "start": 16.077,
+        "end": 17.077,
+        "text": "So, wait."
+      },
+      {
+        "start": 20.937,
+        "end": 21.937,
+        "text": "No."
+      },
+      {
+        "start": 23.187,
+        "end": 24.187,
+        "text": "Super."
+      },
+      {
+        "start": 33.837,
+        "end": 35.277,
+        "text": "Wait, where do we want to go?"
+      },
+      {
+        "start": 36.327,
+        "end": 37.327,
+        "text": "So what, the shortest?"
+      },
+      {
+        "start": 37.477,
+        "end": 39.176,
+        "text": "Okay, but this is the shortest route."
+      },
+      {
+        "start": 39.177,
+        "end": 39.627,
+        "text": "Let's go."
+      },
+      {
+        "start": 39.627,
+        "end": 40.627,
+        "text": "Not."
+      },
+      {
+        "start": 41.237,
+        "end": 42.237,
+        "text": "No."
+      },
+      {
+        "start": 43.767,
+        "end": 44.767,
+        "text": "Good."
+      },
+      {
+        "start": 46.707,
+        "end": 47.756,
+        "text": "Well, I'm lowering it."
+      },
+      {
+        "start": 47.757,
+        "end": 48.757,
+        "text": "I am lowering."
+      },
+      {
+        "start": 51.717,
+        "end": 52.717,
+        "text": "Okay, now."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 3.997,
+        "end": 4.997,
+        "text": "Here? "
+      },
+      {
+        "start": 10.795,
+        "end": 11.208,
+        "text": "A."
+      },
+      {
+        "start": 13.493,
+        "end": 14.488,
+        "text": "Yes, well..."
+      },
+      {
+        "start": 31.437,
+        "end": 32.437,
+        "text": "And you?"
+      },
+      {
+        "start": 36.807,
+        "end": 37.807,
+        "text": "Well, to this circle."
+      },
+      {
+        "start": 40.557,
+        "end": 40.663,
+        "text": "Wait."
+      },
+      {
+        "start": 40.663,
+        "end": 46.497,
+        "text": "You have to lower and turn a bit."
+      }
+    ]
+  }
+}

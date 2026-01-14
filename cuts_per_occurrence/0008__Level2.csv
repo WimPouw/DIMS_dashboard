@@ -1,0 +1,100 @@
+tier,start_s,end_s,text
+Game events,0.0,47.395,Level 2
+Gaze Parent,0.0,1.036,Ball
+Gaze Parent,1.036,1.896,Further
+Gaze Parent,1.903,2.281,Ball
+Gaze Parent,2.281,2.883,Further
+Gaze Parent,2.883,3.963,Ball
+Gaze Parent,3.976,4.459,Further
+Gaze Parent,4.473,4.903,Intersection
+Gaze Parent,4.903,6.135,Further
+Gaze Parent,6.141,7.479,Intersection
+Gaze Parent,7.486,7.983,Ball
+Gaze Parent,7.989,8.32,Go
+Gaze Parent,8.334,8.989,Ball
+Gaze Parent,8.989,10.526,My axis
+Gaze Parent,10.539,11.731,Intersection
+Gaze Parent,11.731,11.903,Ball
+Gaze Parent,11.91,12.312,My controller
+Gaze Parent,12.312,14.367,Intersection
+Gaze Parent,14.367,15.323,Ball
+Gaze Parent,15.323,15.618,My controller
+Gaze Parent,15.618,16.062,Further
+Gaze Parent,16.066,16.432,Ball
+Gaze Parent,16.432,17.037,My controller
+Gaze Parent,17.037,21.192,Intersection
+Gaze Parent,21.195,22.193,Further
+Gaze Parent,22.193,24.868,Intersection
+Gaze Parent,24.871,25.286,Ball
+Gaze Parent,25.288,25.787,Further
+Gaze Parent,25.789,26.23,My controller
+Gaze Parent,26.232,27.594,Further
+Gaze Parent,27.598,28.334,My axis
+Gaze Parent,28.339,30.053,Intersection
+Gaze Parent,30.056,32.218,Further
+Gaze Parent,32.223,33.51,Intersection
+Gaze Parent,33.515,33.921,Ball
+Gaze Parent,33.921,34.125,My axis
+Gaze Parent,34.127,35.7,Intersection
+Gaze Parent,35.701,36.227,My controller
+Gaze Parent,36.23,37.104,Further
+Gaze Parent,37.107,42.6,Intersection
+Gaze Parent,42.601,43.391,My axis
+Gaze Parent,43.391,47.395,Intersection
+Gaze Child,0.0,1.169,Counter
+Gaze Child,1.169,1.293,Ball
+Gaze Child,1.293,1.561,My controller
+Gaze Child,1.561,1.728,Ball
+Gaze Child,1.73,3.471,Further
+Gaze Child,3.471,4.192,Ball
+Gaze Child,4.192,4.678,My axis
+Gaze Child,4.688,7.346,Intersection
+Gaze Child,7.349,8.176,Go
+Gaze Child,8.18,9.076,Ball
+Gaze Child,9.076,11.818,Intersection
+Gaze Child,11.818,12.034,Ball
+Gaze Child,12.034,12.278,Go
+Gaze Child,12.283,13.037,Ball's possible trajectory
+Gaze Child,13.037,14.083,Intersection
+Gaze Child,14.087,14.306,Partner's axis
+Gaze Child,14.306,14.691,Go
+Gaze Child,14.695,15.794,Ball
+Gaze Child,15.794,15.977,Intersection
+Gaze Child,15.977,16.49,Further
+Gaze Child,16.49,16.725,My axis
+Gaze Child,16.725,17.037,Further
+Gaze Child,17.037,17.204,My axis
+Gaze Child,17.205,17.427,Intersection
+Gaze Child,17.427,17.86,My axis
+Gaze Child,17.861,17.96,Intersection
+Gaze Child,17.96,18.158,Ball's possible trajectory
+Gaze Child,18.159,18.558,Ball
+Gaze Child,18.558,18.794,My axis
+Gaze Child,18.794,20.359,Intersection
+Gaze Child,20.359,21.043,Go
+Gaze Child,21.043,23.105,Intersection
+Gaze Child,23.109,23.976,Go
+Gaze Child,23.98,25.483,Intersection
+Gaze Child,25.483,26.063,My controller
+Gaze Child,26.068,26.611,Intersection
+Gaze Child,26.611,26.893,Further
+Gaze Child,26.893,30.151,Intersection
+Gaze Child,30.155,30.553,Partner's axis
+Gaze Child,30.553,31.935,Further
+Gaze Child,31.939,32.881,Intersection
+Gaze Child,32.881,33.121,Further
+Gaze Child,33.122,33.354,Ball
+Gaze Child,33.354,33.719,Intersection
+Gaze Child,33.719,34.744,Go
+Gaze Child,34.744,35.82,Ball
+Gaze Child,35.823,36.666,My axis
+Gaze Child,36.669,37.234,Further
+Gaze Child,37.234,40.83,Intersection
+Gaze Child,40.83,40.917,Ball
+Gaze Child,40.917,41.79,Go
+Gaze Child,41.79,42.588,Intersection
+Gaze Child,42.588,43.408,My axis
+Gaze Child,43.408,45.632,Intersection
+Gaze Child,45.632,46.775,Go
+Gaze Child,46.775,47.395,Ball
+Parent Gesture,29.723,32.039,Points

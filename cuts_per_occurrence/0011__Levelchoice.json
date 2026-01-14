@@ -1,0 +1,63 @@
+{
+  "speakers": {
+    "Parent SUB-EN": [
+      {
+        "start": 0.0,
+        "end": 2.879,
+        "text": "And 15 wait zero and 15 and okay, it went like this."
+      },
+      {
+        "start": 3.3,
+        "end": 4.839,
+        "text": "Number of moves made - 3."
+      },
+      {
+        "start": 4.92,
+        "end": 6.769,
+        "text": "Time to complete board 34."
+      },
+      {
+        "start": 6.83,
+        "end": 7.83,
+        "text": "1."
+      },
+      {
+        "start": 8.84,
+        "end": 9.34,
+        "text": "Repeat."
+      },
+      {
+        "start": 9.34,
+        "end": 10.34,
+        "text": "Finish."
+      },
+      {
+        "start": 13.18,
+        "end": 13.305,
+        "text": "Present?"
+      },
+      {
+        "start": 13.305,
+        "end": 14.1,
+        "text": "Good."
+      }
+    ],
+    "Child SUB-EN": [
+      {
+        "start": 2.549,
+        "end": 3.549,
+        "text": "And what now?"
+      },
+      {
+        "start": 12.12,
+        "end": 12.139,
+        "text": "Gift."
+      },
+      {
+        "start": 12.139,
+        "end": 13.139,
+        "text": "Gift."
+      }
+    ]
+  }
+}
