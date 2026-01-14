@@ -8,6 +8,7 @@
         "CUF00_L1_A2": ["speed","vy","vx"]
     },
     "include_RQA": ["gaze_child"],
+    "include_crosswavelet": ["vy","vx"],
 
     "defaultWindowSize": 5,
     "title": "DIMS Dashboard",

@@ -42,7 +42,7 @@ MONTE_CARLO_ITERATIONS = 0  # Number of Monte Carlo iterations (0 = use theoreti
 # ---------- Scale-Averaged Band Parameters ----------
 SCALE_AVG_BAND_AUTO = True  # Auto-calculate scale-averaging band
 SCALE_AVG_MIN_PERIOD = 2.0  # Minimum period for scale-averaging (in time units)
-SCALE_AVG_MAX_PERIOD = 8.0  # Maximum period for scale-averaging (in time units)
+SCALE_AVG_MAX_PERIOD = 2.0  # Maximum period for scale-averaging (in time units)
 # Note: If auto, uses 2*dt to min(8*dt, max_period/2)
 
 # ---------- Coherence Calculation Parameters ----------
@@ -512,13 +512,23 @@ def process_cross_wavelet_pair(video_id, data_type1, data_type2, config):
         print(f"  Common time base: {len(time_common)} points, dt={dt:.4f}")
     
     # Apply edge taper if requested
+    # Apply edge taper if requested
     if EDGE_TAPER:
-        window = signal.tukey(len(time_common), alpha=TAPER_ALPHA)
+        try:
+            # Try standard location
+            window = signal.tukey(len(time_common), alpha=TAPER_ALPHA)
+        except AttributeError:
+            try:
+                # Try explicit windows submodule (common in older versions)
+                from scipy.signal import windows
+                window = windows.tukey(len(time_common), alpha=TAPER_ALPHA)
+            except (ImportError, AttributeError):
+                # Fallback to Hanning window if Tukey is completely missing
+                if VERBOSE:
+                    print("  Warning: Tukey window not found. Falling back to Hanning window.")
+                window = signal.hanning(len(time_common))
+                
         data1_interp = data1_interp * window
-        data2_interp = data2_interp * window
-        if DEBUG_MODE and VERBOSE:
-            print(f"  Applied Tukey window with α={TAPER_ALPHA}")
-    
     # Compute cross-wavelet transform using standard approach
     cwt_results = compute_cross_wavelet_standard(
         data1_interp, data2_interp, time_common, dt,
