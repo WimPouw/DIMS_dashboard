@@ -10,7 +10,7 @@
             this.timeSlider = null;
             this.rqaData = null;
             this.crossWaveletData = null;
-            this.currentTab = 'timeseries';
+            this.currentTab = 'trajectory';
             this.currentPerspective = '';
 
         }
@@ -48,147 +48,348 @@
             }
         }
 
-        setupTabs() {
-            const hasRQA = this.config.include_RQA && this.config.include_RQA.length > 0;
-            const hasCrossWavelet = this.config.include_crosswavelet && this.config.include_crosswavelet.length >= 2;
+       setupTabs() {
+        const hasRQA = this.config.include_RQA && this.config.include_RQA.length > 0;
+        const hasCrossWavelet = this.config.include_crosswavelet && this.config.include_crosswavelet.length >= 2;
+        // NEW: Check for trajectory configuration
+        const hasTrajectory = this.config.include_trajectory === true;
 
-            // If neither RQA nor cross-wavelet, hide tab container
-            if (!hasRQA && !hasCrossWavelet) {
-                const tabContainer = document.getElementById('tabContainer');
-                if (tabContainer) tabContainer.style.display = 'none';
-                return;
-            }
-
-            // Create tab UI if not exists
-            let tabContainer = document.getElementById('tabContainer');
-            if (!tabContainer) {
-                // Create tab container above plot container
-                const plotContainer = document.getElementById('plotContainer');
-                tabContainer = document.createElement('div');
-                tabContainer.id = 'tabContainer';
-
-                let tabHTML = `<div class="tabs" style="margin: 20px 0; border-bottom: 2px solid #444;">
-                    <button class="tab-button active" data-tab="timeseries" style="
-                        padding: 10px 20px;
-                        background: #333;
-                        color: white;
-                        border: none;
-                        margin-right: 5px;
-                        cursor: pointer;
-                        border-bottom: 3px solid #007bff;
-                    ">Time Series</button>`;
-
-                if (hasRQA) {
-                    tabHTML += `<button class="tab-button" data-tab="rqa" style="
-                        padding: 10px 20px;
-                        background: #222;
-                        color: white;
-                        border: none;
-                        margin-right: 5px;
-                        cursor: pointer;
-                        border-bottom: 3px solid transparent;
-                    ">RQA Plots</button>`;
-                }
-
-                if (hasCrossWavelet) {
-                    tabHTML += `<button class="tab-button" data-tab="crosswavelet" style="
-                        padding: 10px 20px;
-                        background: #222;
-                        color: white;
-                        border: none;
-                        margin-right: 5px;
-                        cursor: pointer;
-                        border-bottom: 3px solid transparent;
-                    ">Cross-Wavelet</button>`;
-                }
-
-                tabHTML += `</div>`;
-                tabContainer.innerHTML = tabHTML;
-                plotContainer.parentNode.insertBefore(tabContainer, plotContainer);
-
-                // Create RQA container if needed
-                if (hasRQA) {
-                    const rqaContainer = document.createElement('div');
-                    rqaContainer.id = 'rqaContainer';
-                    rqaContainer.style.display = 'none';
-                    rqaContainer.style.minHeight = '800px';
-                    rqaContainer.style.backgroundColor = '#111';
-                    rqaContainer.style.padding = '20px';
-                    plotContainer.parentNode.insertBefore(rqaContainer, plotContainer.nextSibling);
-                }
-
-                // Create Cross-Wavelet container if needed
-                if (hasCrossWavelet) {
-                    const cwContainer = document.createElement('div');
-                    cwContainer.id = 'crossWaveletContainer';
-                    cwContainer.style.display = 'none';
-                    cwContainer.style.minHeight = '800px';
-                    cwContainer.style.backgroundColor = '#111';
-                    cwContainer.style.padding = '20px';
-                    plotContainer.parentNode.insertBefore(cwContainer, plotContainer.nextSibling);
-                }
-            }
-
-            // Add tab click handlers
-            const tabButtons = tabContainer.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const targetTab = e.target.dataset.tab;
-                    this.switchTab(targetTab);
-                });
-            });
+        if (!hasRQA && !hasCrossWavelet && !hasTrajectory) {
+            const tabContainer = document.getElementById('tabContainer');
+            if (tabContainer) tabContainer.style.display = 'none';
+            return;
         }
 
-        switchTab(tabName) {
-            this.currentTab = tabName;
-
-            // Update button styles
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                if (button.dataset.tab === tabName) {
-                    button.style.background = '#333';
-                    button.style.borderBottom = '3px solid #007bff';
-                    button.classList.add('active');
-                } else {
-                    button.style.background = '#222';
-                    button.style.borderBottom = '3px solid transparent';
-                    button.classList.remove('active');
-                }
-            });
-
-            // Show/hide containers
+        // Create tab container if it doesn't exist
+        let tabContainer = document.getElementById('tabContainer');
+        if (!tabContainer) {
             const plotContainer = document.getElementById('plotContainer');
-            const rqaContainer = document.getElementById('rqaContainer');
-            const cwContainer = document.getElementById('crossWaveletContainer');
+            tabContainer = document.createElement('div');
+            tabContainer.id = 'tabContainer';
+            
+            // Build Tab Buttons
+            let tabHTML = `<div class="tabs" style="margin: 20px 0; border-bottom: 2px solid #444;">
+                <button class="tab-button active" data-tab="timeseries" style="padding: 10px 20px; background: #333; color: white; border: none; margin-right: 5px; cursor: pointer; border-bottom: 3px solid #007bff;">Time Series</button>`;
 
-            if (tabName === 'timeseries') {
-                plotContainer.style.display = 'block';
-                if (rqaContainer) rqaContainer.style.display = 'none';
-                if (cwContainer) cwContainer.style.display = 'none';
-            } else if (tabName === 'rqa') {
-                plotContainer.style.display = 'none';
-                if (rqaContainer) rqaContainer.style.display = 'block';
-                if (cwContainer) cwContainer.style.display = 'none';
+            if (hasRQA) {
+                tabHTML += `<button class="tab-button" data-tab="rqa" style="padding: 10px 20px; background: #222; color: white; border: none; margin-right: 5px; cursor: pointer; border-bottom: 3px solid transparent;">RQA Plots</button>`;
+            }
 
-                // Load RQA if not already loaded
-                if (this.currentVideoID && !this.rqaData) {
-                    this.loadRQAData(this.currentVideoID);
-                } else if (this.rqaData && this.lastClickedPoint !== null) {
-                    this.updateRQAHighlights();
-                }
-            } else if (tabName === 'crosswavelet') {
-                plotContainer.style.display = 'none';
-                if (rqaContainer) rqaContainer.style.display = 'none';
-                if (cwContainer) cwContainer.style.display = 'block';
+            if (hasCrossWavelet) {
+                tabHTML += `<button class="tab-button" data-tab="crosswavelet" style="padding: 10px 20px; background: #222; color: white; border: none; margin-right: 5px; cursor: pointer; border-bottom: 3px solid transparent;">Cross-Wavelet</button>`;
+            }
+            
+            // NEW: Trajectory Button
+            if (hasTrajectory) {
+                tabHTML += `<button class="tab-button" data-tab="trajectory" style="padding: 10px 20px; background: #222; color: white; border: none; margin-right: 5px; cursor: pointer; border-bottom: 3px solid transparent;">Trajectory</button>`;
+            }
 
-                // Load cross-wavelet if not already loaded
-                if (this.currentVideoID && !this.crossWaveletData) {
-                    this.loadCrossWaveletData(this.currentVideoID);
-                } else if (this.crossWaveletData && this.lastClickedPoint !== null) {
-                    this.updateCrossWaveletHighlights();
-                }
+            tabHTML += `</div>`;
+            tabContainer.innerHTML = tabHTML;
+            plotContainer.parentNode.insertBefore(tabContainer, plotContainer);
+
+            // Create Containers for each tab
+            if (hasRQA) {
+                const rqaContainer = document.createElement('div');
+                rqaContainer.id = 'rqaContainer';
+                rqaContainer.style.display = 'none';
+                rqaContainer.style.minHeight = '800px';
+                rqaContainer.style.backgroundColor = '#111';
+                rqaContainer.style.padding = '20px';
+                plotContainer.parentNode.insertBefore(rqaContainer, plotContainer.nextSibling);
+            }
+
+            if (hasCrossWavelet) {
+                const cwContainer = document.createElement('div');
+                cwContainer.id = 'crossWaveletContainer';
+                cwContainer.style.display = 'none';
+                cwContainer.style.minHeight = '800px';
+                cwContainer.style.backgroundColor = '#111';
+                cwContainer.style.padding = '20px';
+                plotContainer.parentNode.insertBefore(cwContainer, plotContainer.nextSibling);
+            }
+            
+            // NEW: Trajectory Container
+            if (hasTrajectory) {
+                const trajContainer = document.createElement('div');
+                trajContainer.id = 'trajectoryContainer';
+                trajContainer.style.display = 'none';
+                trajContainer.style.height = '800px'; // Square-ish aspect ratio handled in plot layout
+                trajContainer.style.backgroundColor = '#111';
+                trajContainer.style.padding = '20px';
+                plotContainer.parentNode.insertBefore(trajContainer, plotContainer.nextSibling);
             }
         }
+
+        // Add Click Handlers
+        const tabButtons = tabContainer.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                this.switchTab(e.target.dataset.tab);
+            });
+        });
+    }
+     switchTab(tabName) {
+        this.currentTab = tabName;
+
+        // Update Buttons
+        document.querySelectorAll('.tab-button').forEach(button => {
+            if (button.dataset.tab === tabName) {
+                button.style.background = '#333';
+                button.style.borderBottom = '3px solid #007bff';
+                button.classList.add('active');
+            } else {
+                button.style.background = '#222';
+                button.style.borderBottom = '3px solid transparent';
+                button.classList.remove('active');
+            }
+        });
+
+        // Hide All Containers
+        ['plotContainer', 'rqaContainer', 'crossWaveletContainer', 'trajectoryContainer'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+
+        // Show Selected Container and Load Data
+        if (tabName === 'timeseries') {
+            document.getElementById('plotContainer').style.display = 'block';
+        } else if (tabName === 'rqa') {
+            document.getElementById('rqaContainer').style.display = 'block';
+            if (this.currentVideoID && !this.rqaData) this.loadRQAData(this.currentVideoID);
+            else if (this.rqaData) this.updateRQAHighlights();
+        } else if (tabName === 'crosswavelet') {
+            document.getElementById('crossWaveletContainer').style.display = 'block';
+            if (this.currentVideoID && !this.crossWaveletData) this.loadCrossWaveletData(this.currentVideoID);
+            else if (this.crossWaveletData) this.updateCrossWaveletHighlights();
+        } else if (tabName === 'trajectory') {
+            document.getElementById('trajectoryContainer').style.display = 'block';
+            // Calculate trajectory if new video or not yet calculated
+            if (this.currentVideoID && (!this.trajectoryData || this.trajectoryData.videoID !== this.currentVideoID)) {
+                this.calculateAndShowTrajectory();
+            } else {
+                // Just update highlights (red window + marker)
+                this.updateTrajectoryHighlight();
+                // Ensure plot resizes correctly when tab becomes visible
+                Plotly.Plots.resize('trajectoryContainer');
+            }
+        }
+    }
+    calculateAndShowTrajectory() {
+        if (!this.currentData) return;
+
+        // 1. Get Velocity Data
+        // We look for 'vx' and 'vy' in the loaded datasets
+        const vxSeries = this.currentData.find(d => d.name === 'vx');
+        const vySeries = this.currentData.find(d => d.name === 'vy');
+
+        if (!vxSeries || !vySeries) {
+            this.showError('Trajectory Error: Missing "vx" or "vy" data columns.');
+            return;
+        }
+
+        // 2. Integrate Velocity to get Position
+        // Formula: x[i] = x[i-1] + vx[i] * dt
+        
+        // Helper to get raw arrays sorted by time
+        const getSorted = (series) => [...series.data].sort((a, b) => a.Time - b.Time);
+        const vxData = getSorted(vxSeries);
+        const vyData = getSorted(vySeries);
+
+        const xArr = [];
+        const yArr = [];
+        const tArr = [];
+
+        // Configurable start position
+        let currX = this.config.trajectory_settings?.startX || 0;
+        let currY = this.config.trajectory_settings?.startY || 0;
+        
+        // Use length of shortest array to avoid index errors
+        const len = Math.min(vxData.length, vyData.length);
+
+        for (let i = 0; i < len; i++) {
+            const t = vxData[i].Time;
+            const vx = vxData[i].vx; // Ensure CSV column header is exactly 'vx'
+            const vy = vyData[i].vy; 
+
+            if (i > 0) {
+                const dt = t - tArr[i-1];
+                // Simple Euler integration
+                currX += vx * dt;
+                currY += vy * dt;
+            }
+
+            xArr.push(currX);
+            yArr.push(currY);
+            tArr.push(t);
+        }
+
+        this.trajectoryData = {
+            videoID: this.currentVideoID,
+            x: xArr,
+            y: yArr,
+            time: tArr
+        };
+
+        // 3. Render Initial Plot
+        this.renderTrajectoryPlot();
+    }
+renderTrajectoryPlot() {
+        const containerId = 'trajectoryContainer';
+        const bgImage = this.config.trajectory_settings?.imagePath || '';
+        const fieldW = this.config.trajectory_settings?.fieldWidth || 100;
+        const fieldH = this.config.trajectory_settings?.fieldHeight || 100;
+
+        // Trace 0: Full Path (Background trace)
+        const traceFull = {
+            x: this.trajectoryData.x,
+            y: this.trajectoryData.y,
+            mode: 'lines',
+            type: 'scatter',
+            name: 'Full Path',
+            line: { color: 'rgba(0, 255, 255, 0.3)', width: 1 }, // Faint Cyan
+            hoverinfo: 'none'
+        };
+
+        // Trace 1: Active Window (Red Highlight)
+        // Initially empty, populated by updateTrajectoryHighlight
+        const traceWindow = {
+            x: [],
+            y: [],
+            mode: 'lines',
+            type: 'scatter',
+            name: 'Active Window',
+            line: { color: 'red', width: 4 },
+            hoverinfo: 'none'
+        };
+
+        // Trace 2: Current Position (Marker)
+        const traceMarker = {
+            x: [this.trajectoryData.x[0]],
+            y: [this.trajectoryData.y[0]],
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Current Pos',
+            marker: { size: 12, color: 'yellow', line: {color: 'black', width: 2} },
+            hovertemplate: 'X: %{x:.2f}<br>Y: %{y:.2f}<extra></extra>'
+        };
+
+        const layout = {
+            title: { text: 'Ball Trajectory', font: { color: 'white' } },
+            paper_bgcolor: '#111',
+            plot_bgcolor: '#222',
+            font: { color: 'white' },
+            showlegend: true,
+            legend: { x: 0, y: 1, font: {size: 10} },
+            xaxis: { 
+                range: [0, fieldW], 
+                showgrid: false, 
+                zeroline: false,
+                visible: false 
+            },
+            yaxis: { 
+                range: [0, fieldH], 
+                showgrid: false, 
+                zeroline: false, 
+                visible: false,
+                scaleanchor: 'x', // Force 1:1 aspect ratio
+                scaleratio: 1
+            },
+            images: [
+                {
+                    source: bgImage,
+                    xref: "x",
+                    yref: "y",
+                    x: 0,
+                    y: fieldH, // Anchored at top-left
+                    sizex: fieldW,
+                    sizey: fieldH,
+                    sizing: "stretch",
+                    opacity: 0.6,
+                    layer: "below"
+                }
+            ],
+            margin: { t: 40, l: 10, r: 10, b: 10 },
+            hovermode: 'closest',
+            dragmode: 'pan' // Default interaction
+        };
+
+        Plotly.newPlot(containerId, [traceFull, traceWindow, traceMarker], layout, { responsive: true });
+
+        // Add Click Interaction (Click path -> Jump to time)
+        document.getElementById(containerId).on('plotly_click', (data) => {
+            if (data.points && data.points.length > 0) {
+                const pt = data.points[0];
+                // Find closest point in trajectory data to the click
+                // (Since we are clicking lines, pointIndex might not be exact, so we search)
+                let closestIdx = 0;
+                let minDist = Infinity;
+                const dataX = this.trajectoryData.x;
+                const dataY = this.trajectoryData.y;
+                
+                for(let i=0; i<dataX.length; i++) {
+                    const dx = dataX[i] - pt.x;
+                    const dy = dataY[i] - pt.y;
+                    const dist = dx*dx + dy*dy;
+                    if (dist < minDist) {
+                        minDist = dist;
+                        closestIdx = i;
+                    }
+                }
+                
+                const clickTime = this.trajectoryData.time[closestIdx];
+                this.handleTimeClick(clickTime);
+            }
+        });
+
+        // Initialize highlights
+        if (this.lastClickedPoint !== null) {
+            this.updateTrajectoryHighlight();
+        }
+    }
+
+    updateTrajectoryHighlight() {
+        if (this.currentTab !== 'trajectory') return;
+        if (!this.trajectoryData) return;
+        
+        const currentTime = this.lastClickedPoint !== null ? this.lastClickedPoint : 0;
+        const windowSize = parseFloat(document.getElementById('windowSize').value) || 5;
+        const halfWin = windowSize / 2;
+        const startTime = currentTime - halfWin;
+        const endTime = currentTime + halfWin;
+
+        // 1. Filter data for the Window Trace (Red Line)
+        const xWin = [];
+        const yWin = [];
+        let markerX = this.trajectoryData.x[0];
+        let markerY = this.trajectoryData.y[0];
+        let minTimeDiff = Infinity;
+
+        for (let i = 0; i < this.trajectoryData.time.length; i++) {
+            const t = this.trajectoryData.time[i];
+            
+            // Build red window trace
+            if (t >= startTime && t <= endTime) {
+                xWin.push(this.trajectoryData.x[i]);
+                yWin.push(this.trajectoryData.y[i]);
+            }
+
+            // Find exact current position marker
+            const diff = Math.abs(t - currentTime);
+            if (diff < minTimeDiff) {
+                minTimeDiff = diff;
+                markerX = this.trajectoryData.x[i];
+                markerY = this.trajectoryData.y[i];
+            }
+        }
+
+        // 2. Efficiently update Plotly traces
+        // Trace 1 = Window, Trace 2 = Marker
+        Plotly.restyle('trajectoryContainer', {
+            x: [xWin, [markerX]],
+            y: [yWin, [markerY]]
+        }, [1, 2]);
+    }
 
         async loadCrossWaveletData(videoID) {
             this.showStatus('Loading cross-wavelet data...');
@@ -1531,30 +1732,33 @@
         }
 
 
-        handleTimeClick(time) {
-            this.lastClickedPoint = time;
-            const windowSize = parseInt(document.getElementById('windowSize').value) || 5;
+       // Ensure handleTimeClick calls the update function
+    handleTimeClick(time) {
+        this.lastClickedPoint = time;
+        const windowSize = parseInt(document.getElementById('windowSize').value) || 5;
 
-            // Update plot with highlight
-            this.plotTimeseries(this.currentData, time);
+        // Update plot with highlight
+        this.plotTimeseries(this.currentData, time);
 
-            // Update videos
-            this.updateVideos(time, windowSize);
+        // Update videos
+        this.updateVideos(time, windowSize);
 
-            // Update transcript
-            this.updateTranscript(time, windowSize);
+        // Update transcript
+        this.updateTranscript(time, windowSize);
 
-            // Update highlights based on current tab
-            if (this.currentTab === 'rqa' && this.rqaData) {
-                this.updateRQAHighlights();
-            } else if (this.currentTab === 'crosswavelet' && this.crossWaveletData) {
-                this.updateCrossWaveletHighlights();
-            }
-
-            // Update status
-            document.getElementById('status').textContent =
-                `Selected time: ${time.toFixed(2)}s (window: ${windowSize}s)`;
+        // Update highlights based on current tab
+        if (this.currentTab === 'rqa' && this.rqaData) {
+            this.updateRQAHighlights();
+        } else if (this.currentTab === 'crosswavelet' && this.crossWaveletData) {
+            this.updateCrossWaveletHighlights();
+        } else if (this.currentTab === 'trajectory') {
+            this.updateTrajectoryHighlight(); // NEW CALL
         }
+
+        // Update status
+        document.getElementById('status').textContent =
+            `Selected time: ${time.toFixed(2)}s (window: ${windowSize}s)`;
+    }
 
         updateVideos(clickTime, windowSize) {
              // Build videoSrc with perspective if possible

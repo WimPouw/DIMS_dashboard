@@ -7,6 +7,14 @@
         "CUF00_L1_A1": ["speed","vy","vx"],
         "CUF00_L1_A2": ["speed","vy","vx"]
     },
+    "include_trajectory": true,
+    "trajectory_settings": {
+        "imagePath": "assets/images/path1.png",
+        "startX": 150,
+        "startY": 150,
+        "fieldWidth": 2100, 
+        "fieldHeight": 2100
+    },
     "include_RQA": ["gaze_child"],
     "include_crosswavelet": ["vy","vx"],
 
